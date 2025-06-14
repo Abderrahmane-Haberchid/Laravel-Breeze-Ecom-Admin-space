@@ -7,9 +7,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    return view('products');
+})->middleware(['auth', 'verified'])->name('products');
+
+Route::get('/add', function () {
+    return view('addProduct');
+})->middleware(['auth', 'verified'])->name('addProduct');
+
+Route::get('/update', function () {
+    return view('updateProduct');
+})->middleware(['auth', 'verified'])->name('updateProduct');
+
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
